@@ -51,4 +51,11 @@ important: Structures are value types and Classes are reference types.
 
 ## Operators
 
-Operators are special functions in how are declared
+Operators are special functions in how are declared, for example:
+>, >=, <, <=, ==, /, *, -, +  etc.
+
+### swift has 3 types of operators:
+- Unary prefix EX: !,
+- Unary postfix EX: ,  
+- Binary infix EX: +, -, *, /, >, >=, <, <=, == 
+- Ternary Operators EX: age >= 18 ? "You are a adult" : "You are not a adult"
