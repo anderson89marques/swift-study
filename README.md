@@ -59,3 +59,29 @@ Operators are special functions in how are declared, for example:
 - Unary postfix EX: ,  
 - Binary infix EX: +, -, *, /, >, >=, <, <=, == 
 - Ternary Operators EX: age >= 18 ? "You are a adult" : "You are not a adult"
+
+
+## If-Else
+
+It`s a flow control.
+
+Examples: 
+
+```
+if myName == "Anderson" {
+    "Your name is \(myAge)"
+} else if myName == "Foo" {
+    
+} else {
+    
+}
+
+
+if myName == "Anderson" && myAge == 35 {
+    "I`m \(myName) and i`m have \(myAge)"
+}
+
+if myName == "Anderson" || myAge == 32 {
+    "I`m \(myName) and i`m have \(myAge)"
+}
+```
