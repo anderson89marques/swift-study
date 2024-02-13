@@ -125,7 +125,7 @@ customMinus2(20, 10)
 // Raise an exception
 ```
 
-###Inner Functions
+### Inner Functions
 
 ```
 // with is the external name of the argument and
@@ -158,4 +158,49 @@ print(getFullName())
 print(getFullName(firstName: "Arthur"))
 print(getFullName(lastName: "Morais"))
 print(getFullName(firstName: "Arthur", lastName: "Morais"))
+```
+
+## Closures
+
+Closures such as special types of functions are created inline so that we can pass them to another function for instance.
+
+```
+import Foundation
+
+// Closure add
+let add: (Int, Int) -> Int = {
+    (lhs: Int, rhs: Int) -> Int in
+    lhs + rhs
+}
+
+let minus: (Int, Int) -> Int = {
+    (lhs: Int, rhs: Int) -> Int in
+    lhs - rhs
+}
+
+func add2(lhs: Int, rhs: Int) -> Int {
+    lhs + rhs
+}
+
+add(10, 45)
+minus(4, 2)
+
+func calculator(
+    _ lhs: Int,
+    _ rhs: Int,
+    using function: (Int, Int) -> Int
+) -> Int {
+    function(lhs, rhs)
+}
+
+calculator(10, 45, using: add)
+calculator(4, 2, using: minus)
+calculator(10, 10, using: add2)
+
+let ages = [34, 19, 40, 20]
+ages.sorted(by: {(lhs: Int, rhs: Int) -> Bool in lhs > rhs})
+// passing the function ">", because this function receives exactly two parameter
+ages.sorted(by: >)
+ages.sorted(by: <)
+
 ```
