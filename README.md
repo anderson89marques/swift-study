@@ -56,7 +56,7 @@ Operators are special functions in how are declared, for example:
 
 ### Swift has 3 types of operators:
 - Unary prefix EX: !,
-- Unary postfix EX: ,  
+- Unary postfix EX: !,  
 - Binary infix EX: +, -, *, /, >, >=, <, <=, == 
 - Ternary Operators EX: age >= 18 ? "You are an adult" : "You are not an adult"
 
@@ -196,6 +196,7 @@ func calculator(
 calculator(10, 45, using: add)
 calculator(4, 2, using: minus)
 calculator(10, 10, using: add2)
+calculator(2, 4, using: {(lhs: Int, rhs: Int) -> Int in lhs * rhs})
 
 let ages = [34, 19, 40, 20]
 ages.sorted(by: {(lhs: Int, rhs: Int) -> Bool in lhs > rhs})
@@ -204,3 +205,60 @@ ages.sorted(by: >)
 ages.sorted(by: <)
 
 ```
+
+## Structures
+
+Structures are value types structures in Swift.
+
+```
+import Foundation
+
+struct Person {
+    let name: String
+    let age: Int
+}
+
+let foo = Person(name: "Anderson", age: 20)
+print(foo.name)
+print(foo.age)
+
+// Customer initiaizer
+struct CommodoreComputer {
+    let name: String
+    let manufacturer: String
+    init(name: String) {
+        self.name = name
+        self.manufacturer = "Commodore"
+    }
+}
+let c64 = CommodoreComputer(name: "C64")
+print(c64)
+
+// We could get the same result as below.
+struct CommodoreComputer2 {
+    let name: String
+    let manufacturer: String = "Commodore"
+}
+let c128 = CommodoreComputer2(name: "C128")
+print(c128)
+
+```
+### Mutable Structures
+
+```
+// Mutable Struct
+struct Car {
+    var currentSpeed: Int
+    mutating func drive(speed: Int) {
+        currentSpeed = speed
+    }
+}
+
+var car = Car(currentSpeed: 20)
+car.drive(speed: 60)
+```
+
+| Structures can`t subclass other Structures
+
+## Enumerations
+
