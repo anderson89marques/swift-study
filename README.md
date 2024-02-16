@@ -131,7 +131,7 @@ customMinus2(20, 10)
 // with is the external name of the argument and
 // value is the internal name of the argument
 // Function can contain other functions
-// Inner Functions can`t called externally
+// Inner Functions can`t be called externally
 func doSomethingComplicated(with value: Int) -> Int {
     func mainLogic(value: Int) -> Int {
         value + 2
@@ -298,7 +298,7 @@ default:
     print("Default Value")
 }
 
-// In swict case all the enum values must be checked
+// In switch case all the enum values must be checked
 ```
 
 ### Associated Value
@@ -382,4 +382,185 @@ enum Family: String {
 
 print(Family.brother.rawValue) // "Bro"
 print(Family.sister.rawValue) // "Sis"
+```
+
+## Classes
+
+Classes are reference-type structures.
+
+Classes are REQUIRED to have a constructor.
+When we define a variable with "let" that is an instance of a class, the internal attributes can be changed.
+
+```
+import Foundation
+
+class Person {
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    // mutating don`t works with classes
+    func increaseAge() {
+        self.age += 1
+    }
+}
+
+let person = Person(name: "Anderson", age: 34)
+person.age
+person.increaseAge()
+person.age
+```
+
+### Reference Types
+
+Reference Types means that when change one instance, all other instances change too.
+
+```
+let person = Person(name: "Anderson", age: 34)
+person.age
+person.increaseAge()
+person.age
+
+let person2 = person
+person2.increaseAge()
+
+person2.age // will have the same age
+person.age // will have the same age
+```
+
+## Hierachy
+
+```
+// Hierachy
+class Vehicle {
+    func goVroom() {
+        print("Vroom Vroom")
+    }
+}
+
+class Car: Vehicle {
+    
+}
+let car = Car()
+car.goVroom()
+
+class Vehicle {
+    func goVroom() {
+        print("Vroom Vroom")
+    }
+}
+
+class Car: Vehicle {
+    
+}
+let car = Car()
+car.goVroom()
+
+class Vehicle {
+    func goVroom() {
+        print("Vroom Vroom")
+    }
+}
+
+class Car: Vehicle {
+    
+}
+let car = Car()
+car.goVroom()
+```
+
+### Private Attributes
+
+```
+// private attributes
+
+class Person2 {
+    var name: String
+    private(set) var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+    // mutating don`t works with classes
+    func increaseAge() {
+        self.age += 1
+    }
+}
+let p = Person2(name: "Anr", age: 34)
+//p.age += 2 We can`t set direct values
+p.increaseAge()
+
+```
+
+### Designated Initializer
+
+```
+// Designated Initializer
+
+class Tesla {
+    var manufacture = "Tesla"
+    var model: String
+    var year: Int
+    
+    init() {
+        self.model = "X"
+        self.year = 2023
+    }
+    
+    init(
+        model: String,
+        year: Int
+    ) {
+        self.model = model
+        self.year = year
+    }
+    
+    convenience init(
+        model: String
+    ) {
+        self.init(model: model, year: 2023)
+    }
+}
+
+
+class TeslaModelY: Tesla {
+    override init() {
+        super.init(model: "Y", year: 2023)
+    }
+}
+let modelY = TeslaModelY()
+modelY.model
+modelY.year
+```
+
+### Deinitializers
+
+```
+// Deinitializers
+
+class MyClass {
+    init() {
+        print("Init")
+    }
+    
+    func doSomething() {
+        print("Do Somithing")
+    }
+    
+    deinit {
+        print("Deinit")
+    }
+}
+
+let myClosure = {
+    let myClass = MyClass()
+    myClass.doSomething()
+    // myClass will go out of scope at the end of the closure
+    // so deinit will be called
+}
+myClosure()
 ```
