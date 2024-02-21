@@ -128,8 +128,8 @@ customMinus2(20, 10)
 ### Inner Functions
 
 ```
-// with is the external name of the argument and
-// value is the internal name of the argument
+// "with" is the external name of the argument and
+// "value" is the internal name of the argument
 // Function can contain other functions
 // Inner Functions can`t be called externally
 func doSomethingComplicated(with value: Int) -> Int {
@@ -447,29 +447,6 @@ class Car: Vehicle {
 let car = Car()
 car.goVroom()
 
-class Vehicle {
-    func goVroom() {
-        print("Vroom Vroom")
-    }
-}
-
-class Car: Vehicle {
-    
-}
-let car = Car()
-car.goVroom()
-
-class Vehicle {
-    func goVroom() {
-        print("Vroom Vroom")
-    }
-}
-
-class Car: Vehicle {
-    
-}
-let car = Car()
-car.goVroom()
 ```
 
 ### Private Attributes
@@ -573,9 +550,9 @@ It is a set of roles, something like an interface, that objects must conform wit
 import Foundation
 
 protocol CanBreathe {
-    // We can`t create a implementation to a protocol function
+    // We can`t create an implementation to a protocol function
     // And we can`t Instanciate a protocol
-    func canBreathe() // This function must be overrated by the classes that use this protocol
+    func canBreathe() // This function must be overrated by the classes/structs that use this protocol
 }
 
 struct Animal: CanBreathe {
